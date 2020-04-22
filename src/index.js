@@ -171,7 +171,7 @@ class Game extends React.Component {
     // Call calculate winner and handle status
     const history = this.state.history;
     // const current = history[history.length - 1];
-    const current = history[this.state.stepNumber + 1];
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares)
 
     // Map 2nd arg is the index
