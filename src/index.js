@@ -68,7 +68,17 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = `Next player ${(this.state.xIsNext ? 'X' : 'O')}`;
+    // const status = `Next player ${(this.state.xIsNext ? 'X' : 'O')}`;
+    const winner = calculateWinner(this.state.squares);
+    let status;
+
+    if (winner) {
+      status = `Winner ${winner}`;
+    } else {
+      this.state.squares.indexOf(null) === -1 ?
+        status = 'Tied' :
+        status = `Next player ${(this.state.xIsNext ? 'X' : 'O')}`;
+    }
 
     return (
       <div>
@@ -134,6 +144,7 @@ function calculateWinner(squares) {
 
   return null;
 }
+
 // ========================================
 
 ReactDOM.render(
