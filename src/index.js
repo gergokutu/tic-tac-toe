@@ -166,6 +166,16 @@ class Game extends React.Component {
     });
   }
 
+  newGame() {
+    this.setState({
+      history: [
+        {squares: Array(9).fill(null)}
+      ],
+      stepNumber: 0,
+      xIsNext: true
+    });
+  }
+
   render() {
     // Handle the game status here >
     // Call calculate winner and handle status
@@ -206,6 +216,7 @@ class Game extends React.Component {
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
           />
+          <button onClick={() => this.newGame()}>Play again</button>
         </div>
         <div className="game-info">
           <div>{status}</div>
