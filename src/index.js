@@ -56,7 +56,16 @@ class Board extends React.Component {
   // handleClick(i) {
   // // Use slice for immutability 
   //   const squares = this.state.squares.slice();
+
+  //   // Return early by ignoring a click
+  //   // If someone has won the game or
+  //   // If a Square is already filled
+  //   if (calculateWinner(squares) || squares[i]) {
+  //     return;
+  //   }
+
   //   squares[i] = this.state.xIsNext ? 'X' : 'O';
+
   //   this.setState({
   //     squares: squares,
   //     xIsNext: !this.state.xIsNext
@@ -130,6 +139,9 @@ class Game extends React.Component {
     // Slice for immutability!!!
     const squares = current.squares.slice();
 
+    // Return early by ignoring a click
+    // If someone has won the game or
+    // If a Square is already filled
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
@@ -157,7 +169,7 @@ class Game extends React.Component {
       status = `Winner ${winner}`;
     } else {
       current.squares.indexOf(null) === -1 ?
-        status = 'Tied' :
+        status = 'Tie' :
         status = `Next player ${(this.state.xIsNext ? 'X' : 'O')}`;
     }
 
